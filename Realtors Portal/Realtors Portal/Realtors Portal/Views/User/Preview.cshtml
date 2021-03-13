@@ -1,0 +1,163 @@
+﻿@{
+    ViewBag.Title = @ViewBag.UserID.u_name;
+}
+
+<!-- Trusted Agents -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-5">
+                <img class="rounded img-fluid" src="~/assets/img/user/@ViewBag.UserID.u_image" alt="@ViewBag.UserID.u_name Profile Picture">
+            </div>
+            <div class="col-lg-7 col-md-7 pl-5 pr-5">
+                <h1 class="mb-0 mt-4">@ViewBag.UserID.u_name</h1>
+                <h5 class="text-base mb-3">@ViewBag.UserRole</h5>
+
+                @if (ViewBag.UserID.u_about != null)
+                {
+                    <p>
+                        @ViewBag.UserID.u_about
+                    </p>
+                }
+                <div class="row mt-3">
+                    <div class="col-lg-6 col-md-6">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <p><strong class="text-dark">Phone :</strong> @ViewBag.UserID.u_phone</p>
+                        }
+                        else
+                        {
+                            <p><strong class="text-dark">Phone :</strong> XXXX-XXXXXXX</p>
+                        }
+                        <p><strong class="text-dark">City :</strong> @ViewBag.UserCity</p>
+                        <p><strong class="text-dark">Membership :</strong> @ViewBag.Membership</p>
+
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <p><strong class="text-dark">Email :</strong> @ViewBag.UserID.u_email</p>
+                        }
+                        else
+                        {
+                            <p><strong class="text-dark">Email :</strong> XXXXXXXXXXXXXX@XXXXX.COM</p>
+                        }
+                        <p><strong class="text-dark">State :</strong> @ViewBag.UserState</p>
+                        <p><strong class="text-dark">Member From :</strong> @ViewBag.UserID.u_created</p>
+                    </div>
+                </div>
+
+                @if (ViewBag.UserID.u_facebook != null || ViewBag.UserID.u_twitter != null || ViewBag.UserID.u_instagram != null)
+                {
+                    <div class="footer-social">
+                        <span>Follow : </span>
+                        @if (ViewBag.UserID.u_facebook != null)
+                        {
+                            <a href="@ViewBag.UserID.u_facebook"><i class="mdi mdi-facebook"></i></a>
+                        }
+                        @if (ViewBag.UserID.u_twitter != null)
+                        {
+                            <a href="@ViewBag.UserID.u_twitter"><i class="mdi mdi-twitter"></i></a>
+                        }
+                        @if (ViewBag.UserID.u_instagram != null)
+                        {
+                            <a href="@ViewBag.UserID.u_instagram"><i class="mdi mdi-instagram"></i></a>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Trusted Agents -->
+<!-- My Properties -->
+    <section class="section-padding  border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 section-title text-left mb-4">
+                    <h2>@ViewBag.UserID.u_name Properties</h2>
+                </div>
+                <div class="col-lg-12 col-md-12">
+                    @if (ViewBag.checkProperties > 0)
+                    {
+                        <div class="owl-carousel">
+                            @foreach (var pr in @ViewBag.UserProperties)
+                            {
+                                if (pr.p_status == "Active")
+                                {
+                                    <div class="item">
+                                        <div class="card card-list">
+                                            <a href="/Property/View/@pr.p_id">
+                                                <span class="badge badge-success">For @pr.p_purpose</span>
+                                                <img class="card-img-top" src="~/assets/img/property/@pr.p_image_1" alt="@pr.p_name">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">@pr.p_name</h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted"><i class="mdi mdi-home-map-marker"></i>@pr.p_location</h6>
+                                                    <h2 class="text-base mb-0 mt-3">
+                                                        PKR @pr.p_demand
+                                                    </h2>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <span><i class="mdi mdi-sofa"></i> Beds : <strong>@pr.p_bedrooms</strong></span>
+                                                    <span><i class="mdi mdi-scale-bathroom"></i> Baths : <strong>@pr.p_bathrooms</strong></span>
+                                                    <span><i class="mdi mdi-move-resize-variant"></i> Area : <strong>@pr.p_area sqft</strong></span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-lg-12 col-md-12">
+                            <p>No Property Found!</p>
+                        </div>
+                    }
+                    </div>
+                </div>
+            </div>
+    </section>
+<!-- End My Properties -->
+<!-- Contact Me -->
+<section class="section-padding  bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 section-title text-left mb-4">
+                <h2>Contact Me</h2>
+            </div>
+            <form class="col-lg-12 col-md-12" name="sentMessage">
+                <div class="row">
+                    <div class="control-group form-group col-lg-4 col-md-4">
+                        <div class="controls">
+                            <label>Your Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="control-group form-group col-lg-4 col-md-4">
+                        <div class="controls">
+                            <label>Email Address <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="control-group form-group col-lg-4 col-md-4">
+                        <div class="controls">
+                            <label>Phone Number <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Message <span class="text-danger">*</span></label>
+                        <textarea rows="10" cols="100" class="form-control"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn-base">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- End Contact Me -->

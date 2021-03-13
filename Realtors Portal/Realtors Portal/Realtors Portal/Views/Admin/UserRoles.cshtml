@@ -1,0 +1,62 @@
+﻿@model Realtors_Portal.Models.RP_userRoles
+@{
+    ViewBag.Title = "User Roles";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("AddRoles", "Admin", FormMethod.Post, new { encType = "multipart/form-data" }))
+{
+    <div class="card padding-card">
+        <div class="card-body">
+            <h5 class="card-title mb-4">Add Roles</h5>
+            <div class="form-group">
+                    <label>Role Name</label>
+                    @Html.TextBoxFor(m => m.r_name, new { @class = "form-control", placeholder = "Role Name" })
+                <div class="mt-2">
+                    <button type="submit" class="btn-base">ADD ROLE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        ALL ROLES
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Role</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Role</th>
+                        <th>Options</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var rl in @ViewBag.roles)
+                    {
+                        <tr>
+                            <td>@rl.r_id</td>
+                            <td>@rl.r_name</td>
+                            <td>
+                                <a href="/Admin/EditRoles/@rl.r_id" class="btn-sm btn-info">Edit</a>
+                                <a href="/Admin/DeleteRoles/@rl.r_id" class="btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,128 @@
+﻿    <!DOCTYPE html>
+    <html>
+    <head>
+
+        <!-- META TAGS -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <!-- TITLE  & FAVICON -->
+        <title>@ViewBag.Title - REALTORS PORTAL</title>
+        <link rel="icon" href="~/assets/img/favicon.png" />
+
+        <!-- CSS FILES -->
+        <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/assets/css/fontawesome.min.css" rel="stylesheet" />
+        <link href="~/assets/css/materialdesignicons.min.css" rel="stylesheet" />
+        <link href="~/assets/css/datatables.bootstrap.min.css" rel="stylesheet">
+        <link href="~/assets/css/sb-admin.min.css" rel="stylesheet">
+        <link href="~/assets/css/main.css" rel="stylesheet">
+
+        <!-- FONTS -->
+        <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body id="page-top" class="sidebar-toggled">
+
+
+        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+            <a class="navbar-brand mr-1" href="@Url.Action("Index", "Home")">REALTORS PORTAL</a>
+
+            <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Navbar -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Logout", "Home")">Logout</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <ul class="sidebar navbar-nav toggled">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Dashboard", "Admin")">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-home"></i>
+                        <span>Properties</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                        <a class="dropdown-item" href="@Url.Action("AddProperty", "Admin")">Add New</a>
+                        <a class="dropdown-item" href="@Url.Action("AllProperties", "Admin")">All Properties</a>
+                        <a class="dropdown-item" href="@Url.Action("PropertyTypes", "Admin")">Property Types</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-users"></i>
+                        <span>Users</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                        <a class="dropdown-item" href="@Url.Action("AddUser", "Admin")">Add New</a>
+                        <a class="dropdown-item" href="@Url.Action("AllUsers", "Admin")">All Users</a>
+                        <a class="dropdown-item" href="@Url.Action("UserRoles", "Admin")">User Roles</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("AllMemberships", "Admin")">
+                        <i class="fas fa-fw fa-rocket"></i>
+                        <span>Membership</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div id="content-wrapper">
+
+                @if (!(ViewBag.Error == null))
+                {
+                    <div class="alert alert-danger rounded-0">
+                        @ViewBag.Error
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                }
+
+                @if (!(ViewBag.Success == null))
+                {
+                    <div class="alert alert-success rounded-0">
+                        @ViewBag.Success
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                }
+
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /.content-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- End Footer -->
+        <!-- JS FILES -->
+        <script src="~/assets/js/jquery.min.js"></script>
+        <script src="~/assets/js/jquery.easing.min.js"></script>
+        <script src="~/assets/js/bootstrap.min.js"></script>
+        <script src="~/assets/js/jquery.datatables.min.js"></script>
+        <script src="~/assets/js/datatables.bootstrap.min.js"></script>
+        <script src="~/assets/js/sb-admin.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,172 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "Home";
+}
+
+@{
+    List<SelectListItem> propertyPurpose = new List<SelectListItem>();
+    propertyPurpose.Add(new SelectListItem
+    {
+        Text = "Sale",
+        Value = "Sale"
+    });
+    propertyPurpose.Add(new SelectListItem
+    {
+        Text = "Rent",
+        Value = "Rent"
+    });
+}
+
+<!-- Main Slider With Form -->
+<section class="header-slider">
+    <div id="headerslider" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#headerslider" data-slide-to="0" class="active"></li>
+            <li data-target="#headerslider" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active" style="background-image: url('../../assets/img/slider/1.jpg')">
+                <div class="overlay"></div>
+            </div>
+            <div class="carousel-item" style="background-image: url('../../assets/img/slider/2.jpg')">
+                <div class="overlay"></div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#headerslider" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#headerslider" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div class="slider-form">
+        <div class="container">
+            <h1 class="text-center text-white mb-5">Find Your Favorite Property</h1>
+            @using (Html.BeginForm("", "Property", FormMethod.Get))
+            {
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-location-arrow"></i></div>
+                            @Html.DropDownList("city", new SelectList(ViewBag.cities, "c_id", "c_name"), new { @class = "form-control custom-select" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-home"></i></div>
+                            @Html.DropDownList("type", new SelectList(ViewBag.propertyTypes, "pt_id", "pt_name"), new { @class = "form-control custom-select" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fas fa-spell-check"></i></div>
+                            @Html.DropDownList("purpose", propertyPurpose, new { @class = "form-control custom-select" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn bg-base btn-block text-white">SEARCH</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- End Main Slider With Form -->
+@if (@ViewBag.checkProperties > 0)
+{
+    <!-- Properties List -->
+    <section class="section-padding">
+        <div class="section-title text-center mb-5">
+            <h2>Latest Properties</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                @foreach (var pr in ViewBag.properties)
+                {
+                    if (pr.p_status == "Active" && pr.p_availability == "Available")
+                    {
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card card-list">
+                                <a href="/Property/View/@pr.p_id">
+                                    <span class="badge badge-success">For @pr.p_purpose</span>
+                                    <img class="card-img-top" src="~/assets/img/property/@pr.p_image_1" alt="@pr.p_name">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@pr.p_name</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted"><i class="mdi mdi-home-map-marker"></i>@pr.p_location</h6>
+                                        <h2 class="text-base mb-0 mt-3">
+                                            PKR @pr.p_demand
+                                        </h2>
+                                    </div>
+                                    <div class="card-footer">
+                                        <span><i class="mdi mdi-sofa"></i> Beds : <strong>@pr.p_bedrooms</strong></span>
+                                        <span><i class="mdi mdi-scale-bathroom"></i> Baths : <strong>@pr.p_bathrooms</strong></span>
+                                        <span><i class="mdi mdi-move-resize-variant"></i> Area : <strong>@pr.p_area sqft</strong></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </section>
+    <!-- End Properties List -->
+}
+
+
+<section class="section-padding">
+    <div class="section-title text-center mb-5">
+        <h2>Popular Cities</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            @foreach (var city in ViewBag.popularcities)
+            {
+            <div class="col-lg-4 col-md-6">
+                <div class="card card-list">
+                    <a href="/Property?city=@city.c_id">
+                        <span class="badge badge-success">@city.c_name</span>
+                        <img class="card-img-top" src="~/assets/img/cities/@city.c_image" alt="@city.c_name">
+                    </a>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+@if (ViewBag.checkAgent > 0)
+{
+    <!-- Trusted Agents -->
+    <section class="section-padding bg-white">
+        <div class="section-title text-center mb-5">
+            <h2>Trusted Agents</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+        <div class="container">
+            <div class="owl-carousel">
+                @foreach (var ag in ViewBag.agents)
+                {
+                    <div class="item">
+                        <a href="/User/Preview/@ag.u_id">
+                            <div class="agents-card text-center">
+                                <div class="img-box">
+                                    <img class="img-fluid" src="~/assets/img/user/@ag.u_image" alt="@ag.u_name">
+                                </div>
+                                <h3 class="mb-0 text-base">@ag.u_name</h3>
+                                <small>@ViewBag.agentRole</small>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    <!-- End Trusted Agents -->
+}

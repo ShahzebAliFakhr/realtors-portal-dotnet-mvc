@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "All Users";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        ALL USERS
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Role</th>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Role</th>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Options</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var usr in @ViewBag.users)
+                    {
+                    <tr>
+                        <td>@usr.u_id</td>
+                        <td>@usr.u_role</td>
+                        <td>@usr.u_username</td>
+                        <td>@usr.u_name</td>
+                        <td>@usr.u_phone</td>
+                        <td>@usr.u_email</td>
+                        <td>@usr.u_status</td>
+                        <td>@usr.u_created</td>
+                        <td>
+                            <a href="/Admin/EditUser/@usr.u_id" class="btn-sm btn-info">Edit</a>
+                            <a href="/User/Preview/@usr.u_id" class="btn-sm btn-success" target="_blank">View</a>
+                            <a href="/Admin/DeleteUser/@usr.u_id" class="btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

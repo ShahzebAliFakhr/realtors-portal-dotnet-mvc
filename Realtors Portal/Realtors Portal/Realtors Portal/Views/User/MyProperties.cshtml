@@ -1,0 +1,92 @@
+﻿@model Realtors_Portal.Models.RP_property
+@{
+    ViewBag.Title = "My Properties";
+}
+
+<section class="tab-view">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("UserProfile", "User")">User Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("SocialProfile", "User")">Social Profiles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-base" href="@Url.Action("MyProperties", "User")">My Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("AddProperty", "User")">Add Property</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/User/Preview/@Session["usrID"]">Preview</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- My Properties -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 mx-auto">
+
+                @if (User.IsInRole("Seller"))
+                {
+
+                <div class="row">
+                    @foreach (var pr in @ViewBag.userProperties)
+                    {
+                            <div class="col-lg-4 col-md-4">
+                                <div class="card card-list">
+                                    <a href="/Property/View/@pr.p_id">
+                                        <div class="card-img-box">
+                                            <span class="badge badge-success">For @pr.p_purpose</span>
+                                            <span class="badge-status">@pr.p_status</span>
+                                            <a href="/User/UpdateProperty/@pr.p_id">
+                                                <span class="badge-edit">Edit</span>
+                                            </a>
+                                            <img class="card-img-top" src="~/assets/img/property/@pr.p_image_1" alt="@pr.p_name">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">@pr.p_name</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted"><i class="mdi mdi-home-map-marker"></i>@pr.p_location</h6>
+                                            <h2 class="text-base mb-0 mt-3">
+                                                PKR @pr.p_demand
+                                            </h2>
+                                        </div>
+                                        <div class="card-footer">
+                                            <span><i class="mdi mdi-sofa"></i> Beds : <strong>@pr.p_bedrooms</strong></span>
+                                            <span><i class="mdi mdi-scale-bathroom"></i> Baths : <strong>@pr.p_bathrooms</strong></span>
+                                            <span><i class="mdi mdi-move-resize-variant"></i> Area : <strong>@pr.p_area sqft</strong></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                    }
+                </div>
+
+                }
+                else
+                {
+                    <div class="card padding-card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">NOTICE</h5>
+                            @using (Html.BeginForm("BecomeaSeller", "User", FormMethod.Post, new { encType = "multipart/form-data" }))
+                            {
+                                <div class="form-group">
+                                    <p>You can't add property because you've a Buyer Account.</p>
+                                    <button type="submit" class="btn-base">BECOME A SELLER</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End My Properties -->

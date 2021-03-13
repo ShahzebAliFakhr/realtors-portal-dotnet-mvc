@@ -1,0 +1,122 @@
+﻿@model Realtors_Portal.Models.RP_users
+@{
+    ViewBag.Title = "Add User";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
+    List<SelectListItem> userStatus = new List<SelectListItem>();
+    userStatus.Add(new SelectListItem
+    {
+        Text = "Active",
+        Value = "Active"
+    });
+    userStatus.Add(new SelectListItem
+    {
+        Text = "Pending",
+        Value = "Pending"
+    });
+}
+
+@using (Html.BeginForm("AddUser", "Admin", FormMethod.Post, new { encType = "multipart/form-data" }))
+{
+    <div class="card padding-card">
+        <div class="card-body">
+            <h5 class="card-title mb-4">Upload Profile Picture</h5>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="fuzone">
+                        <div class="fu-text">
+                            <span>
+                                <i class="mdi mdi-image-area"></i> Click here or drop files to
+                                upload
+                            </span>
+                        </div>
+                        @Html.TextBoxFor(m => m.userImageData, new { Type = "File", @class = "uploads" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card padding-card">
+        <div class="card-body">
+            <h5 class="card-title mb-4">Personal Details</h5>
+            <div class="form-group row">
+                <div class="col-lg-4 col-md-4">
+                    <label>FullName <span class="text-danger">*</span></label>
+                    @Html.TextBoxFor(m => m.u_name, new { @class = "form-control", placeholder = "Enter FullName" })
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <label>Email <span class="text-danger">*</span></label>
+                    @Html.TextBoxFor(m => m.u_email, new { @class = "form-control", placeholder = "Enter Email", type = "email" })
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <label>Phone <span class="text-danger">*</span></label>
+                    @Html.TextBoxFor(m => m.u_phone, new { @class = "form-control", placeholder = "Enter Phone" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-4 col-md-4">
+                    <label>City <span class="text-danger">*</span></label>
+                    @Html.DropDownListFor(m => m.u_city, new SelectList(ViewBag.cities, "c_id", "c_name"), new { @class = "form-control custom-select" })
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <label>Status <span class="text-danger">*</span></label>
+                    @Html.DropDownListFor(x => x.u_status, userStatus, new { @class = "form-control custom-select" })
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <label>Membership <span class="text-danger">*</span></label>
+                    @Html.DropDownListFor(m => m.u_membership, new SelectList(ViewBag.memberships, "m_id", "m_name"), new { @class = "form-control custom-select" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label>About Me <span class="text-danger">*</span></label>
+                @Html.TextAreaFor(m => m.u_about, new { @class = "form-control", placeholder = "Enter About (Max 300 Characters)", rows = "10", maxlength = "300" })
+            </div>
+        </div>
+    </div>
+
+    <div class="card padding-card">
+        <div class="card-body">
+            <h5 class="card-title mb-4">Social Profiles</h5>
+
+            <div class="form-group row">
+                <div class="col-lg-4 col-md-4">
+                    <label>Facebook</label>
+                    @Html.TextBoxFor(m => m.u_facebook, new { @class = "form-control", placeholder = "https://www.facebook.com/example" })
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <label>Twitter</label>
+                    @Html.TextBoxFor(m => m.u_twitter, new { @class = "form-control", placeholder = "https://www.twitter.com/example" })
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <label>Instagram</label>
+                    @Html.TextBoxFor(m => m.u_instagram, new { @class = "form-control", placeholder = "https://www.instagram.com/example" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card padding-card">
+        <div class="card-body">
+            <h5 class="card-title mb-4">Account Details</h5>
+            <div class="form-group row">
+                <div class="col-lg-4 col-md-4">
+                    <label>Password <span class="text-danger">*</span></label>
+                    @Html.PasswordFor(m => m.u_password, new { @class = "form-control", placeholder = "Enter Password" })
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <label>Username <span class="text-danger">*</span></label>
+                    @Html.TextBoxFor(m => m.u_username, new { @class = "form-control", placeholder = "Enter Username" })
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <label>Role <span class="text-danger">*</span></label>
+                    @Html.DropDownListFor(m => m.u_role, new SelectList(ViewBag.roles, "r_id", "r_name"), new { @class = "form-control custom-select" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn-base">ADD USER</button>
+}
+

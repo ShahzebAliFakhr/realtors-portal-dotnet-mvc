@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Admin Dashboard";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Icon Cards-->
+<div class="row">
+    <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-base o-hidden h-100">
+            <div class="card-body text-center">
+                <h4>@ViewBag.CountAdmin</h4>
+                <h2>ADMIN</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-base o-hidden h-100">
+            <div class="card-body text-center">
+                <h4>@ViewBag.CountBuyer</h4>
+                <h2>BUYER</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-base o-hidden h-100">
+            <div class="card-body text-center">
+                <h4>@ViewBag.CountSeller</h4>
+                <h2>SELLER</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-base o-hidden h-100">
+            <div class="card-body text-center">
+                <h4>@ViewBag.CountProperties</h4>
+                <h2>PROPERTIES</h2>
+            </div>
+        </div>
+    </div>
+</div>

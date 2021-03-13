@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Agents";
+}
+
+    <!-- Trusted Agents -->
+<section class="section-padding">
+    <div class="section-title text-center mb-5">
+        <h2>Trusted Agents</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            @foreach (var us in ViewBag.agents)
+            {
+                <div class="col-lg-4 col-md-4">
+                    <a href="/User/Preview/@us.u_id">
+                        <div class="card padding-card">
+                            <div class="card-body agents-card text-center">
+                                <img class="img-fluid mb-4" src="~/assets/img/user/@us.u_image" alt="@us.u_name Profile Picture">
+                                <h4 class="mb-0 text-base">@us.u_name</h4>
+                                <small>@ViewBag.agentRole</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- End Trusted Agents -->

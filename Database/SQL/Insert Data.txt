@@ -1,0 +1,234 @@
+-- INSERT STATES
+insert into RP_states values(
+'Federal','federal.jpg'
+)
+insert into RP_states values(
+'Punjab','punjab.jpg'
+)
+insert into RP_states values(
+'Sindh','sindh.jpg'
+)
+insert into RP_states values(
+'KPK','kpk.jpg'
+)
+insert into RP_states values(
+'Balochistan','balochistan.jpg'
+)
+
+-- INSERT CITIES
+/* INSERT QUERY NO: 1 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Islamabad', 1, 'islamabad.jpg'
+);
+
+/* INSERT QUERY NO: 2 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Sialkot', 2, 'sialkot.jpg'
+);
+
+/* INSERT QUERY NO: 3 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Muree', 2, 'muree.jpg'
+);
+
+/* INSERT QUERY NO: 4 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Bahawalpur', 2, 'bahawalpur.jpg'
+);
+
+/* INSERT QUERY NO: 5 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Sadiqabad', 2, 'sadiqabad.jpg'
+);
+
+/* INSERT QUERY NO: 6 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Sahiwal', 2, 'sahiwal.jpg'
+);
+
+/* INSERT QUERY NO: 7 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Wah Cantt', 2, 'wah-cantt.jpg'
+);
+
+/* INSERT QUERY NO: 8 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Rahim Yar Khan', 2, 'rahim-yar-khan.jpg'
+);
+
+/* INSERT QUERY NO: 9 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Dera Ghazi Khan', 2, 'dera-ghazi-khan.jpg'
+);
+
+/* INSERT QUERY NO: 10 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Sargodha', 2, 'sargodha.jpg'
+);
+
+/* INSERT QUERY NO: 11 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Gujranwala', 2, 'gujranwala.jpg'
+);
+
+/* INSERT QUERY NO: 12 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Okara', 2, 'okara.jpg'
+);
+
+/* INSERT QUERY NO: 13 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Jhelum', 2, 'jhelum.jpg'
+);
+
+/* INSERT QUERY NO: 14 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Lahore', 2, 'lahore.jpg'
+);
+
+/* INSERT QUERY NO: 15 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Rawalpindi', 2, 'rawalpindi.jpg'
+);
+
+/* INSERT QUERY NO: 16 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Faisalabad', 2, 'faisalabad.jpg'
+);
+
+/* INSERT QUERY NO: 17 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Multan', 2, 'multan.jpg'
+);
+
+/* INSERT QUERY NO: 18 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Karachi', 3, 'karachi.jpg'
+);
+
+/* INSERT QUERY NO: 19 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Hyderabad', 3, 'hyderabad.jpg'
+);
+
+/* INSERT QUERY NO: 20 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Sukkur', 3, 'sukkur.jpg'
+);
+
+/* INSERT QUERY NO: 21 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Larkana', 3, 'larkana.jpg'
+);
+
+/* INSERT QUERY NO: 22 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Peshawar', 4, 'peshawar.jpg'
+);
+
+/* INSERT QUERY NO: 23 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Abbottabad', 4, 'abbottabad.jpg'
+);
+
+/* INSERT QUERY NO: 24 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Mardan', 4, 'mardan.jpg'
+);
+
+/* INSERT QUERY NO: 25 */
+INSERT INTO RP_Cities(c_name, c_state, c_image)
+VALUES
+(
+'Quetta', 5, 'quetta.jpg'
+);
+
+
+
+-- INSERT MEMBERSHIP
+insert into RP_membership values(
+'FREE','','free.png'
+);
+
+-- INSERT USER ROLES
+INSERT INTO RP_userRoles Values('Admin');
+INSERT INTO RP_userRoles Values('Buyer');
+INSERT INTO RP_userRoles Values('Seller');
+
+
+--INSERT PROPERTY TYPES
+INSERT INTO RP_propertyTypes
+    (pt_name) 
+VALUES
+    ('House'),
+    ('Villa'),
+    ('Flat'),
+    ('Plot'),
+    ('Land'),
+    ('Office Space'),
+    ('Shop'),
+    ('Showroom'),
+    ('Commercial Land'),
+    ('Warehouse'),
+    ('Godown'),
+    ('Industrial Building');
+
+ 
+-- INSER USERS
+insert into RP_users (u_role,u_name,u_username,u_email,u_password,u_phone,u_city,u_status,u_token,u_created,u_image,u_membership)values(
+'1','Shahzaib','shahzaib','shahzaib@gmail.com','shahzaib123','03133956154','18','Active','123456',GETDATE(),'default.jpg','1'
+);
+insert into RP_users (u_role,u_name,u_username,u_email,u_password,u_phone,u_city,u_status,u_token,u_created,u_image,u_membership)values(
+'2','Waqas','waqas','waqas@gmail.com','waqas123','03131234567','18','Active','123457',GETDATE(),'default.jpg','1'
+);
+insert into RP_users (u_role,u_name,u_username,u_email,u_password,u_phone,u_city,u_status,u_token,u_created,u_image,u_membership)values(
+'3','Ehtisham','ehtisham','ehtisham@gmail.com','ehtisham123','03131234568','18','Active','123458',GETDATE(),'default.jpg','1'
+);

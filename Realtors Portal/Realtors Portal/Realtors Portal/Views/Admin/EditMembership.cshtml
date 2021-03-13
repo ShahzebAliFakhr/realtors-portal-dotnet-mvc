@@ -1,0 +1,83 @@
+﻿@model Realtors_Portal.Models.RP_membership
+@{
+    ViewBag.Title = "Edit Memberships";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("EditMembership", "Admin", FormMethod.Post, new { encType = "multipart/form-data" }))
+{
+    <div class="card padding-card">
+        <div class="card-body">
+            <h5 class="card-title mb-4">Edit Membership Plans</h5>
+            <div class="form-group">
+                <label>Membership</label>
+                @Html.TextBoxFor(m => m.m_name, new { @class = "form-control", placeholder = "Membership Name" })
+                @Html.TextBoxFor(m => m.m_id, new { @class = "form-control", placeholder = "Membership  ID", @hidden = "hidden" })
+            </div>
+            <div class="form-group row">
+                <div class="col-md-8">
+                    <label>Membership Description</label>
+                    @Html.TextAreaFor(m => m.m_features, new { @class = "form-control", placeholder = "Membership Description", rows = "8" })
+                </div>
+                <div class="col-md-4">
+                    <label>Membership Icon</label>
+                    <div class="fuzone">
+                        <div class="fu-text">
+                            <span>
+                                <i class="mdi mdi-image-area"></i> Click here or drop files to
+                                upload
+                            </span>
+                        </div>
+                        @Html.TextBoxFor(m => m.membershipImageData, new { Type = "File", @class = "uploads" })
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                <button type="submit" class="btn-base">SAVE EDITS</button>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        ALL MEMBERSHIPS
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>name</th>
+                        <th>Options</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var ms in @ViewBag.memberships)
+                    {
+                        <tr>
+                            <td>@ms.m_id</td>
+                            <td>@ms.m_name</td>
+                            <td>
+                                <a href="/Admin/EditMembership/@ms.m_id" class="btn-sm btn-info">Edit</a>
+                                <a href="/Admin/DeleteMembership/@ms.m_id" class="btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

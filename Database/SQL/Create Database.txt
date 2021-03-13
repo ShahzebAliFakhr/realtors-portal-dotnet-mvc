@@ -1,0 +1,3 @@
+-- DATABASE
+CREATE DATABASE RP_realtorsPortal;
+USE RP_realtorsPortal;

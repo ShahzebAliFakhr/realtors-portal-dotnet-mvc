@@ -1,0 +1,42 @@
+﻿
+
+
+
+<!-- Properties List -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="row">
+                    @foreach (var pr in ViewBag.properties)
+                    {
+                        if (pr.p_status == "Active" && pr.p_availability == "Available")
+                        {
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card card-list">
+                                    <a href="/Property/View/@pr.p_id">
+                                        <span class="badge badge-success">For @pr.p_purpose</span>
+                                        <img class="card-img-top" src="~/assets/img/property/@pr.p_image_1" alt="@pr.p_name">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@pr.p_name</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted"><i class="mdi mdi-home-map-marker"></i>@pr.p_location</h6>
+                                            <h2 class="text-base mb-0 mt-3">
+                                                PKR @pr.p_demand
+                                            </h2>
+                                        </div>
+                                        <div class="card-footer">
+                                            <span><i class="mdi mdi-sofa"></i> Beds : <strong>@pr.p_bedrooms</strong></span>
+                                            <span><i class="mdi mdi-scale-bathroom"></i> Baths : <strong>@pr.p_bathrooms</strong></span>
+                                            <span><i class="mdi mdi-move-resize-variant"></i> Area : <strong>@pr.p_area sqft</strong></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Properties List -->

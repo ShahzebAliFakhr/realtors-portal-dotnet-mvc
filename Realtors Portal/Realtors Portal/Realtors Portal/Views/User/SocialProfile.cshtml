@@ -1,0 +1,67 @@
+﻿@model Realtors_Portal.Models.RP_users
+@{
+    ViewBag.Title = "Social Profile";
+}
+
+
+<section class="tab-view">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("UserProfile", "User")">User Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-base" href="@Url.Action("SocialProfile", "User")">Social Profiles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("MyProperties", "User")">My Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("AddProperty", "User")">Add Property</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/User/Preview/@Session["usrID"]">Preview</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Social Profiles -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 mx-auto">
+
+                @using (Html.BeginForm("Update", "User", FormMethod.Post))
+                {
+
+                    <div class="card padding-card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">Social Profiles</h5>
+
+                            <div class="form-group">
+                                <label>Facebook</label>
+                                @Html.TextBoxFor(m => m.u_facebook, new { @class = "form-control", placeholder = "https://www.facebook.com/example" })
+                            </div>
+                            <div class="form-group">
+                                <label>Twitter</label>
+                                @Html.TextBoxFor(m => m.u_twitter, new { @class = "form-control", placeholder = "https://www.twitter.com/example" })
+                            </div>
+                            <div class="form-group">
+                                <label>Instagram</label>
+                                @Html.TextBoxFor(m => m.u_instagram, new { @class = "form-control", placeholder = "https://www.instagram.com/example" })
+                            </div>
+                        </div>
+                     </div>
+
+                    <button type="submit" class="btn-base">SAVE EDITS</button>
+                    }
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Social Profiles -->

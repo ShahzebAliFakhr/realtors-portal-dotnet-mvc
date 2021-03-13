@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "All Properties";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        ALL PROPERTIES
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Demand</th>
+                        <th>Purpose</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Demand</th>
+                        <th>Purpose</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Options</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var pr in @ViewBag.properties)
+                    {
+                    <tr>
+                        <td>@pr.p_id</td>
+                        <td>@pr.p_name</td>
+                        <td>@pr.p_demand</td>
+                        <td>@pr.p_purpose</td>
+                        <td>@pr.p_type</td>
+                        <td>@pr.p_status</td>
+                        <td>@pr.p_created</td>
+                        <td>
+                            <a href="/Admin/EditProperty/@pr.p_id" class="btn-sm btn-info">Edit</a>
+                            <a href="/Property/View/@pr.p_id" class="btn-sm btn-success" target="_blank">View</a>
+                            <a href="/Admin/DeleteProperty/@pr.p_id" class="btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

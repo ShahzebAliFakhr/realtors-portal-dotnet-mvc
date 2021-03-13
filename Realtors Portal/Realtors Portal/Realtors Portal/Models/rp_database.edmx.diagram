@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="208d42f309d5482d82205000b49d6481" Name="Diagram1">
+        <EntityTypeShape EntityType="RP_realtorsPortalModel.RP_cities" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="RP_realtorsPortalModel.RP_membership" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RP_realtorsPortalModel.RP_property" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RP_realtorsPortalModel.RP_propertyTypes" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RP_realtorsPortalModel.RP_states" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RP_realtorsPortalModel.RP_userRoles" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RP_realtorsPortalModel.RP_users" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="RP_realtorsPortalModel.FK__RP_cities__c_sta__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="RP_realtorsPortalModel.FK__RP_proper__p_cit__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="RP_realtorsPortalModel.FK__RP_users__u_city__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="RP_realtorsPortalModel.FK__RP_users__u_memb__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="RP_realtorsPortalModel.FK__RP_proper__p_pos__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="RP_realtorsPortalModel.FK__RP_proper__p_typ__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="RP_realtorsPortalModel.FK__RP_users__u_role__5535A963" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

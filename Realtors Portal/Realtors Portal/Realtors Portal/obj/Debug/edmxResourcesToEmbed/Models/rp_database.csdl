@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RP_realtorsPortalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="RP_cities">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="c_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="c_state" Type="Int32" />
+    <Property Name="c_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RP_states" Relationship="Self.FK__RP_cities__c_sta__4D94879B" FromRole="RP_cities" ToRole="RP_states" />
+    <NavigationProperty Name="RP_property" Relationship="Self.FK__RP_proper__p_cit__5CD6CB2B" FromRole="RP_cities" ToRole="RP_property" />
+    <NavigationProperty Name="RP_users" Relationship="Self.FK__RP_users__u_city__5629CD9C" FromRole="RP_cities" ToRole="RP_users" />
+  </EntityType>
+  <EntityType Name="RP_membership">
+    <Key>
+      <PropertyRef Name="m_id" />
+    </Key>
+    <Property Name="m_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="m_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="m_features" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="m_icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RP_users" Relationship="Self.FK__RP_users__u_memb__571DF1D5" FromRole="RP_membership" ToRole="RP_users" />
+  </EntityType>
+  <EntityType Name="RP_property">
+    <Key>
+      <PropertyRef Name="p_id" />
+    </Key>
+    <Property Name="p_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="p_type" Type="Int32" />
+    <Property Name="p_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="p_demand" Type="Int64" Nullable="false" />
+    <Property Name="p_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="p_purpose" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="p_area" Type="Int32" Nullable="false" />
+    <Property Name="p_size" Type="Int32" Nullable="false" />
+    <Property Name="p_bedrooms" Type="Int32" Nullable="false" />
+    <Property Name="p_bathrooms" Type="Int32" Nullable="false" />
+    <Property Name="p_floors" Type="Int32" Nullable="false" />
+    <Property Name="p_garages" Type="Int32" Nullable="false" />
+    <Property Name="p_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="p_city" Type="Int32" />
+    <Property Name="p_availability" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="p_postedBy" Type="Int32" />
+    <Property Name="p_video" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="p_image_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="p_image_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="p_image_3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="p_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="p_created" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="RP_cities" Relationship="Self.FK__RP_proper__p_cit__5CD6CB2B" FromRole="RP_property" ToRole="RP_cities" />
+    <NavigationProperty Name="RP_users" Relationship="Self.FK__RP_proper__p_pos__5DCAEF64" FromRole="RP_property" ToRole="RP_users" />
+    <NavigationProperty Name="RP_propertyTypes" Relationship="Self.FK__RP_proper__p_typ__5BE2A6F2" FromRole="RP_property" ToRole="RP_propertyTypes" />
+  </EntityType>
+  <EntityType Name="RP_propertyTypes">
+    <Key>
+      <PropertyRef Name="pt_id" />
+    </Key>
+    <Property Name="pt_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pt_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RP_property" Relationship="Self.FK__RP_proper__p_typ__5BE2A6F2" FromRole="RP_propertyTypes" ToRole="RP_property" />
+  </EntityType>
+  <EntityType Name="RP_states">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="s_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="s_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="s_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RP_cities" Relationship="Self.FK__RP_cities__c_sta__4D94879B" FromRole="RP_states" ToRole="RP_cities" />
+  </EntityType>
+  <EntityType Name="RP_userRoles">
+    <Key>
+      <PropertyRef Name="r_id" />
+    </Key>
+    <Property Name="r_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="r_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RP_users" Relationship="Self.FK__RP_users__u_role__5535A963" FromRole="RP_userRoles" ToRole="RP_users" />
+  </EntityType>
+  <EntityType Name="RP_users">
+    <Key>
+      <PropertyRef Name="u_id" />
+    </Key>
+    <Property Name="u_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="u_role" Type="Int32" />
+    <Property Name="u_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="u_username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="u_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="u_password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="u_phone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="u_city" Type="Int32" />
+    <Property Name="u_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="u_token" Type="Int32" Nullable="false" />
+    <Property Name="u_created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="u_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="u_facebook" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="u_twitter" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="u_instagram" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="u_about" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="u_membership" Type="Int32" />
+    <NavigationProperty Name="RP_cities" Relationship="Self.FK__RP_users__u_city__5629CD9C" FromRole="RP_users" ToRole="RP_cities" />
+    <NavigationProperty Name="RP_membership" Relationship="Self.FK__RP_users__u_memb__571DF1D5" FromRole="RP_users" ToRole="RP_membership" />
+    <NavigationProperty Name="RP_property" Relationship="Self.FK__RP_proper__p_pos__5DCAEF64" FromRole="RP_users" ToRole="RP_property" />
+    <NavigationProperty Name="RP_userRoles" Relationship="Self.FK__RP_users__u_role__5535A963" FromRole="RP_users" ToRole="RP_userRoles" />
+  </EntityType>
+  <Association Name="FK__RP_cities__c_sta__4D94879B">
+    <End Role="RP_states" Type="Self.RP_states" Multiplicity="0..1" />
+    <End Role="RP_cities" Type="Self.RP_cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RP_states">
+        <PropertyRef Name="s_id" />
+      </Principal>
+      <Dependent Role="RP_cities">
+        <PropertyRef Name="c_state" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RP_proper__p_cit__5CD6CB2B">
+    <End Role="RP_cities" Type="Self.RP_cities" Multiplicity="0..1" />
+    <End Role="RP_property" Type="Self.RP_property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RP_cities">
+        <PropertyRef Name="c_id" />
+      </Principal>
+      <Dependent Role="RP_property">
+        <PropertyRef Name="p_city" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RP_users__u_city__5629CD9C">
+    <End Role="RP_cities" Type="Self.RP_cities" Multiplicity="0..1" />
+    <End Role="RP_users" Type="Self.RP_users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RP_cities">
+        <PropertyRef Name="c_id" />
+      </Principal>
+      <Dependent Role="RP_users">
+        <PropertyRef Name="u_city" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RP_users__u_memb__571DF1D5">
+    <End Role="RP_membership" Type="Self.RP_membership" Multiplicity="0..1" />
+    <End Role="RP_users" Type="Self.RP_users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RP_membership">
+        <PropertyRef Name="m_id" />
+      </Principal>
+      <Dependent Role="RP_users">
+        <PropertyRef Name="u_membership" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RP_proper__p_pos__5DCAEF64">
+    <End Role="RP_users" Type="Self.RP_users" Multiplicity="0..1" />
+    <End Role="RP_property" Type="Self.RP_property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RP_users">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="RP_property">
+        <PropertyRef Name="p_postedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RP_proper__p_typ__5BE2A6F2">
+    <End Role="RP_propertyTypes" Type="Self.RP_propertyTypes" Multiplicity="0..1" />
+    <End Role="RP_property" Type="Self.RP_property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RP_propertyTypes">
+        <PropertyRef Name="pt_id" />
+      </Principal>
+      <Dependent Role="RP_property">
+        <PropertyRef Name="p_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RP_users__u_role__5535A963">
+    <End Role="RP_userRoles" Type="Self.RP_userRoles" Multiplicity="0..1" />
+    <End Role="RP_users" Type="Self.RP_users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RP_userRoles">
+        <PropertyRef Name="r_id" />
+      </Principal>
+      <Dependent Role="RP_users">
+        <PropertyRef Name="u_role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RP_realtorsPortalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="RP_cities" EntityType="Self.RP_cities" />
+    <EntitySet Name="RP_membership" EntityType="Self.RP_membership" />
+    <EntitySet Name="RP_property" EntityType="Self.RP_property" />
+    <EntitySet Name="RP_propertyTypes" EntityType="Self.RP_propertyTypes" />
+    <EntitySet Name="RP_states" EntityType="Self.RP_states" />
+    <EntitySet Name="RP_userRoles" EntityType="Self.RP_userRoles" />
+    <EntitySet Name="RP_users" EntityType="Self.RP_users" />
+    <AssociationSet Name="FK__RP_cities__c_sta__4D94879B" Association="Self.FK__RP_cities__c_sta__4D94879B">
+      <End Role="RP_states" EntitySet="RP_states" />
+      <End Role="RP_cities" EntitySet="RP_cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RP_proper__p_cit__5CD6CB2B" Association="Self.FK__RP_proper__p_cit__5CD6CB2B">
+      <End Role="RP_cities" EntitySet="RP_cities" />
+      <End Role="RP_property" EntitySet="RP_property" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RP_users__u_city__5629CD9C" Association="Self.FK__RP_users__u_city__5629CD9C">
+      <End Role="RP_cities" EntitySet="RP_cities" />
+      <End Role="RP_users" EntitySet="RP_users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RP_users__u_memb__571DF1D5" Association="Self.FK__RP_users__u_memb__571DF1D5">
+      <End Role="RP_membership" EntitySet="RP_membership" />
+      <End Role="RP_users" EntitySet="RP_users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RP_proper__p_pos__5DCAEF64" Association="Self.FK__RP_proper__p_pos__5DCAEF64">
+      <End Role="RP_users" EntitySet="RP_users" />
+      <End Role="RP_property" EntitySet="RP_property" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RP_proper__p_typ__5BE2A6F2" Association="Self.FK__RP_proper__p_typ__5BE2A6F2">
+      <End Role="RP_propertyTypes" EntitySet="RP_propertyTypes" />
+      <End Role="RP_property" EntitySet="RP_property" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RP_users__u_role__5535A963" Association="Self.FK__RP_users__u_role__5535A963">
+      <End Role="RP_userRoles" EntitySet="RP_userRoles" />
+      <End Role="RP_users" EntitySet="RP_users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

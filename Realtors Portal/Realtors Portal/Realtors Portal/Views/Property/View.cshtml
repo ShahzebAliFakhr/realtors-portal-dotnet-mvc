@@ -1,0 +1,316 @@
+﻿@{
+    ViewBag.Title = @ViewBag.properties.p_name;
+}
+
+<!-- Property Single Slider header -->
+<section class="osahan-slider">
+    <div class="property-single-title property-single-title-gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <h1>@ViewBag.properties.p_name</h1>
+                    <h6><i class="mdi mdi-home-map-marker"></i> @ViewBag.properties.p_location</h6>
+                </div>
+                <div class="col-lg-4 col-md-4 text-right">
+                    <h6 class="mt-2">For @ViewBag.properties.p_purpose</h6>
+                    <h2 class="text-base">PKR @ViewBag.properties.p_demand</h2>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <p class="mt-1 mb-0"><strong>Property ID</strong> : @ViewBag.properties.p_id</p>
+                </div>
+                <div class="col-lg-4 col-md-4 text-right">
+                    <div class="footer-social">
+                        <span>Share :</span> &nbsp;
+                        <a href="#"><i class="mdi mdi-facebook"></i></a>
+                        <a href="#"><i class="mdi mdi-twitter"></i></a>
+                        <a href="#"><i class="mdi mdi-instagram"></i></a>
+                        <a href="#"><i class="mdi mdi-google"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Property Single Slider header -->
+<!-- Property Single Slider -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8">
+                <div class="card">
+                    <div class="card-body osahan-slider pl-0 pr-0 pt-0 pb-0">
+                        <div id="osahansliderz" class="carousel slide property-slider" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                @if (@ViewBag.properties.p_image_1 != null)
+                                {
+                                    <li data-target="#osahansliderz" data-slide-to="0" class="active"></li>
+                                }
+                                @if (@ViewBag.properties.p_image_2 != null)
+                                {
+                                    <li data-target="#osahansliderz" data-slide-to="1"></li>
+                                }
+                                @if (@ViewBag.properties.p_image_3 != null)
+                                {
+                                    <li data-target="#osahansliderz" data-slide-to="2"></li>
+                                }
+                            </ol>
+
+                            <div class="carousel-inner" role="listbox">
+                                @if (@ViewBag.properties.p_image_1 != null)
+                                {
+                                    <div class="carousel-item active rounded">
+                                        <img src="~/assets/img/property/@ViewBag.properties.p_image_1" />
+                                    </div>
+                                }
+                                @if (@ViewBag.properties.p_image_2 != null)
+                                {
+                                    <div class="carousel-item rounded">
+                                        <img src="~/assets/img/property/@ViewBag.properties.p_image_2" />
+                                    </div>
+                                }
+                                @if (@ViewBag.properties.p_image_3 != null)
+                                {
+                                    <div class="carousel-item rounded">
+                                        <img src="~/assets/img/property/@ViewBag.properties.p_image_3" />
+                                    </div>
+                                }
+                            </div>
+                            <a class="carousel-control-prev" href="#osahansliderz" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#osahansliderz" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card padding-card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Description</h5>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4">
+                                <div class="list-icon">
+                                    <i class="mdi mdi-move-resize-variant"></i>
+                                    <strong>Area:</strong>
+                                    <p class="mb-0">@ViewBag.properties.p_area sqft</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="list-icon">
+                                    <i class="mdi mdi-sofa"></i>
+                                    <strong>Beds:</strong>
+                                    <p class="mb-0">@ViewBag.properties.p_bedrooms Bedrooms</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="list-icon">
+                                    <i class="mdi mdi-hot-tub"></i>
+                                    <strong>Baths:</strong>
+                                    <p class="mb-0">@ViewBag.properties.p_bathrooms Bathrooms</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4">
+                                <div class="list-icon">
+                                    <i class="mdi mdi-floor-plan"></i>
+                                    <strong>Floors:</strong>
+                                    <p class="mb-0">@ViewBag.properties.p_floors Floors</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="list-icon">
+                                    <i class="mdi mdi-car-convertible"></i>
+                                    <strong>Garage:</strong>
+                                    <p class="mb-0">@ViewBag.properties.p_garages Garages</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="list-icon">
+                                    <i class="mdi mdi-move-resize-variant"></i>
+                                    <strong>Size:</strong>
+                                    <p class="mb-0">@ViewBag.properties.p_area sqft</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="mt-2">@ViewBag.properties.p_description</p>
+                    </div>
+                </div>
+
+                <div class="card padding-card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Location</h5>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <p><strong class="text-dark">Address :</strong> @ViewBag.properties.p_location</p>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <p><strong class="text-dark">City :</strong> @ViewBag.propertyCity</p>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <p><strong class="text-dark">State :</strong> @ViewBag.propertyState</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if (@ViewBag.properties.p_video != null)
+                {
+                    <div class="card padding-card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">Video</h5>
+                            <div id="ytbg" data-youtube="@ViewBag.properties.p_video"></div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <div class="col-lg-4 col-md-4">
+                <div class="card sidebar-card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">About Agent</h5>
+                        <div id="featured-properties">
+                            <div class="card card-list">
+                                <a href="/User/Preview/@ViewBag.AgentDetail.u_id">
+                                    <img class="card-img-top" src="~/assets/img/user/@ViewBag.AgentDetail.u_image" alt="@ViewBag.AgentDetail.u_name Profile Picture">
+                                    <div class="card-body pb-0">
+                                        <h5 class="card-title mb-4">@ViewBag.AgentDetail.u_name</h5>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <a href="tel:@ViewBag.AgentDetail.u_phone"><h6 class="card-subtitle mb-3 text-muted"><i class="mdi mdi-phone"></i> @ViewBag.AgentDetail.u_phone</h6></a>
+                                            <a href="mailto:@ViewBag.AgentDetail.u_email">
+                                                <h6 class="card-subtitle mb-3 text-muted"><i class="mdi mdi-email"></i> @ViewBag.AgentDetail.u_email</h6>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <h6 class="card-subtitle mb-3 text-muted"><i class="mdi mdi-phone"></i> XXXX-XXXXXXX</h6>
+                                            <h6 class="card-subtitle mb-3 text-muted"><i class="mdi mdi-email"></i> XXXXXXXXXXXXXX@XXXXX.COM</h6>
+                                        }
+                                    </div>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="card sidebar-card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Request a Showing</h5>
+                        <form name="sentMessage">
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Your Name <span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="Enter Your Name" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Your Email <span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="Enter Your Email" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Phone <span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="Enter Phone Number" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Message <span class="text-danger">*</span></label>
+                                    <textarea rows="5" cols="50" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-base btn-block">SEND REQUEST</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card sidebar-card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Mortage Calculator</h5>
+                        <form name="sentMessage">
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Sale Price <span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="PKR" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Down payment <span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="PKR" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Term <span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="Years" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Interest Rate <span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="%" class="form-control" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-base btn-block">CALCULATE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<!-- End Property Single Slider -->
+<!-- Similar Properties -->
+<section class="section-padding  border-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 section-title text-left mb-4">
+                <h2>Similar Properties</h2>
+            </div>
+            <div class="col-lg-12 col-md-12">
+                <div class="owl-carousel">
+                    @foreach (var pr in @ViewBag.Similarproperties)
+                    {
+                        if (pr.p_status == "Active")
+                        {
+                            <div class="item">
+                                <div class="card card-list">
+                                    <a href="/Property/View/@pr.p_id">
+                                        <span class="badge badge-success">For @pr.p_purpose</span>
+                                        <img class="card-img-top" src="~/assets/img/property/@pr.p_image_1" alt="@pr.p_name">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@pr.p_name</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted"><i class="mdi mdi-home-map-marker"></i>@pr.p_location</h6>
+                                            <h2 class="text-base mb-0 mt-3">
+                                                PKR @pr.p_demand
+                                            </h2>
+                                        </div>
+                                        <div class="card-footer">
+                                            <span><i class="mdi mdi-sofa"></i> Beds : <strong>@pr.p_bedrooms</strong></span>
+                                            <span><i class="mdi mdi-scale-bathroom"></i> Baths : <strong>@pr.p_bathrooms</strong></span>
+                                            <span><i class="mdi mdi-move-resize-variant"></i> Area : <strong>@pr.p_area sqft</strong></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Similar Properties -->

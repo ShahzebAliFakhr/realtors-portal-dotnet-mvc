@@ -1,0 +1,187 @@
+﻿@model Realtors_Portal.Models.RP_property
+@{
+    ViewBag.Title = "Add Property";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
+    List<SelectListItem> propertyPurpose = new List<SelectListItem>();
+    propertyPurpose.Add(new SelectListItem
+    {
+        Text = "Sale",
+        Value = "Sale"
+    });
+    propertyPurpose.Add(new SelectListItem
+    {
+        Text = "Rent",
+        Value = "Rent"
+    });
+
+    List<SelectListItem> propertyAvailibility = new List<SelectListItem>();
+    propertyAvailibility.Add(new SelectListItem
+    {
+        Text = "Available",
+        Value = "Available"
+    });
+    propertyAvailibility.Add(new SelectListItem
+    {
+        Text = "Sold",
+        Value = "Sold"
+    });
+
+    List<SelectListItem> propertyStatus = new List<SelectListItem>();
+    propertyStatus.Add(new SelectListItem
+    {
+        Text = "Active",
+        Value = "Active"
+    });
+    propertyStatus.Add(new SelectListItem
+    {
+        Text = "Pending",
+        Value = "Pending"
+    });
+}
+
+    @using (Html.BeginForm("AddProperty", "Admin", FormMethod.Post, new { encType = "multipart/form-data" }))
+    {
+        <div class="card padding-card">
+            <div class="card-body">
+                <h5 class="card-title mb-4">Property Description</h5>
+                <div class="form-group">
+
+                    <label>Property Title <span class="text-danger">*</span></label>
+                    @Html.TextBoxFor(m => m.p_name, new { @class = "form-control", placeholder = "Property Name" })
+                </div>
+                <div class="form-group">
+                    <label>Property Description <span class="text-danger">*</span></label>
+                    @Html.TextAreaFor(m => m.p_description, new { @class = "form-control", placeholder = "Property Description", rows = "4" })
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label>Type <span class="text-danger">*</span></label>
+                        @Html.DropDownListFor(m => m.p_type, new SelectList(ViewBag.propertyTypes, "pt_id", "pt_name"), new { @class = "form-control custom-select" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Purpose <span class="text-danger">*</span></label>
+                        @Html.DropDownListFor(x => x.p_purpose, propertyPurpose, new { @class = "form-control custom-select" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Demand <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.p_demand, new { @class = "form-control", placeholder = "Property Demand" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label>Bedrooms <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.p_bedrooms, new { @class = "form-control", placeholder = "Bedrooms" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Bathrooms <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.p_bathrooms, new { @class = "form-control", placeholder = "Bathrooms" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Floors <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.p_floors, new { @class = "form-control", placeholder = "Floors" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label>Garages <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.p_garages, new { @class = "form-control", placeholder = "Garages" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Area <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.p_area, new { @class = "form-control", placeholder = "Sq ft" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Size <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.p_size, new { @class = "form-control", placeholder = "Sq ft" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label>Posted By <span class="text-danger">*</span></label>
+                        @Html.DropDownListFor(m => m.p_postedBy, new SelectList(ViewBag.users, "u_id", "u_name"), new { @class = "form-control custom-select" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Availbility <span class="text-danger">*</span></label>
+                        @Html.DropDownListFor(x => x.p_availability, propertyAvailibility, new { @class = "form-control custom-select" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Status <span class="text-danger">*</span></label>
+                        @Html.DropDownListFor(x => x.p_status, propertyStatus, new { @class = "form-control custom-select" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Video URL</label>
+                    @Html.TextBoxFor(m => m.p_video, new { @class = "form-control", placeholder = "Youtube, Vimeo, Dailymotion, etc.." })
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card padding-card">
+            <div class="card-body">
+                <h5 class="card-title mb-4">Property Gallery</h5>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="fuzone">
+                            <div class="fu-text">
+                                <span>
+                                    <i class="mdi mdi-image-area"></i> Click here or drop files to
+                                    upload
+                                </span>
+                            </div>
+                            @Html.TextBoxFor(m => m.ImageData1, new { Type = "File", @class = "uploads" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="fuzone">
+                            <div class="fu-text">
+                                <span>
+                                    <i class="mdi mdi-image-area"></i> Click here or drop files to
+                                    upload
+                                </span>
+                            </div>
+                            @Html.TextBoxFor(m => m.ImageData2, new { Type = "File", @class = "uploads" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="fuzone">
+                            <div class="fu-text">
+                                <span>
+                                    <i class="mdi mdi-image-area"></i> Click here or drop files to
+                                    upload
+                                </span>
+                            </div>
+                            @Html.TextBoxFor(m => m.ImageData3, new { Type = "File", @class = "uploads" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card padding-card">
+            <div class="card-body">
+                <h5 class="card-title mb-4">Property Location</h5>
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        <label>Address <span class="text-danger">*</span></label>
+                        @Html.TextBoxFor(m => m.p_location, new { @class = "form-control", placeholder = "Property Address" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>City <span class="text-danger">*</span></label>
+                        @Html.DropDownListFor(m => m.p_city, new SelectList(ViewBag.cities, "c_id", "c_name"), new { @class = "form-control custom-select" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-base">ADD PROPERTY</button>
+    }
+

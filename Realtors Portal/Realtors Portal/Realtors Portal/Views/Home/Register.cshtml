@@ -1,0 +1,136 @@
+﻿@model Realtors_Portal.Models.RP_users
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<!-- Register -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 mx-auto">
+                <div class="card padding-card">
+
+                    @if (!(ViewBag.Error == null))
+                    {
+                        <div class="alert alert-danger rounded-0">
+                            @ViewBag.Error
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    }
+
+                    @if (!(ViewBag.Success == null))
+                    {
+                        <div class="alert alert-success rounded-0">
+                            @ViewBag.Success
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    }
+
+                        <div class="card-body">
+
+                            <h2 class="card-title text-center mb-4">REGISTER</h2>
+
+                            @using (Html.BeginForm("register", "Home", FormMethod.Post))
+                            {
+
+                                <div class="form-group mb-3 row">
+                                    <div class="col-lg-6 col-md-6">
+                                        @Html.TextBoxFor(m => m.u_name, new { @class = "form-control", placeholder = "Enter FullName" })
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6">
+                                        @Html.TextBoxFor(m => m.u_username, new { @class = "form-control", placeholder = "Enter Username", id = "u_username", oninput = "UserCheck()" })
+                                        <small class="text-danger usernameError"></small>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group mb-3 row">
+                                    <div class="col-lg-6 col-md-6">
+                                        @Html.TextBoxFor(m => m.u_phone, new { @class = "form-control", placeholder = "Enter Phone", id = "u_phone", oninput = "PhoneCheck()" })
+                                        <small class="text-danger phoneError"></small>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6">
+                                        @Html.DropDownListFor(m => m.u_city, new SelectList(ViewBag.cities, "c_id", "c_name"), new { @class = "form-control custom-select" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    @Html.TextBoxFor(m => m.u_email, new { @class = "form-control", placeholder = "Enter Email", type = "email", id = "u_email", oninput = "EmailCheck()" })
+                                    <small class="text-danger emailError"></small>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    @Html.PasswordFor(m => m.u_password, new { @class = "form-control", placeholder = "Enter Password" })
+                                </div>
+
+                                <input type="submit" class="btn-base btn-block" value="REGISTER">
+
+                                <div class="mt-3 text-center">
+                                    <small>By Click on Register, You're agree to our Terms & Conditions.</small>
+                                </div>
+
+                            }
+
+                            <div class="mt-4 text-center">
+                                <a href="@Url.Action("login","Home")">Already have an account? <span class="text-base">Login Here</span></a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+
+    function UserCheck() {
+        $.post("@Url.Action("CheckUsernameAvailability", "Home")",
+            {
+                userdata: $("#u_username").val()
+            },
+        function (data) {
+            if (data != 0) {
+                $(".usernameError").text("Username already exist");
+            } else {
+                $(".usernameError").text("");
+            }
+        });
+    }
+
+    function EmailCheck() {
+        $.post("@Url.Action("CheckEmailAvailability", "Home")",
+            {
+                userdata: $("#u_email").val()
+            },
+        function (data) {
+            if (data != 0) {
+                $(".emailError").text("Email already exist");
+            } else {
+                $(".emailError").text("");
+            }
+        });
+    }
+
+    function PhoneCheck() {
+        $.post("@Url.Action("CheckPhoneAvailability", "Home")",
+            {
+                userdata: $("#u_phone").val()
+            },
+        function (data) {
+            if (data != 0) {
+                $(".phoneError").text("Phone already exist");
+            } else {
+                $(".phoneError").text("");
+            }
+        });
+    }
+</script>
+<!-- End Register -->

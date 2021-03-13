@@ -1,0 +1,211 @@
+﻿    <!DOCTYPE html>
+    <html>
+    <head>
+
+        <!-- META TAGS -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <!-- TITLE  & FAVICON -->
+        <title>@ViewBag.Title - REALTORS PORTAL</title>
+        <link rel="icon" href="~/assets/img/favicon.png" />
+
+        <!-- CSS FILES -->
+        <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/assets/css/select2-bootstrap.css" rel="stylesheet" />
+        <link href="~/assets/css/select2.min.css" rel="stylesheet" />
+        <link href="~/assets/css/fontawesome.min.css" rel="stylesheet" />
+        <link href="~/assets/css/materialdesignicons.min.css" rel="stylesheet" />
+        <link href="~/assets/css/owl.carousel.min.css" rel="stylesheet" />
+        <link href="~/assets/css/main.css" rel="stylesheet" />
+
+        <!-- FONTS -->
+        <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <header>
+            <div id="top-panel">
+                <div class="container">
+                    <div class="row">
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="col-lg-6 dashboard-label">
+                                Hello, @Session["user"]
+                            </div>
+                            <div class="col-lg-6 authentication-links">
+                                <ul>
+                                    <li>
+                                        @Html.ActionLink("LOGOUT", "logout", "Home")
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-lg-6 social-links">
+                                <a href="#" title="Facebook"><i class="fab fa-facebook-f mr-3"></i></a>
+                                <a href="#" title="Twitter"><i class="fab fa-twitter mr-3"></i></a>
+                                <a href="#" title="Instagram"><i class="fab fa-instagram mr-3"></i></a>
+                                <a href="#" title="Pinterest"><i class="fab fa-pinterest mr-3"></i></a>
+                                <a href="#" title="Tumblr"><i class="fab fa-tumblr mr-3"></i></a>
+                                <a href="#" title="Google Plus"><i class="fab fa-google-plus-g mr-3"></i></a>
+                                <a href="#" title="Youtube"><i class="fab fa-youtube mr-3"></i></a>
+                                <a href="#" title="Linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <div class="col-lg-6 authentication-links">
+                                <ul>
+                                    <li>
+                                        @Html.ActionLink("LOGIN or SIGNUP", "Login", "Home")
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+            <nav class="navbar navbar-expand-lg sticky-top" id="navigation">
+                <div class="container">
+                    <a href="@Url.Action("Index", "Home")" title="Home">
+                        <img src="~/assets/img/logo.png" alt="Logo" title="Logo" />
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="mainNavigation">
+                        <ul class="navbar-nav ml-auto">
+
+                            <li class="nav-item @if (@ViewBag.Title == "Home") { @Html.Raw("active"); } ">
+                                @Html.ActionLink("HOME", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+
+                            <li class="nav-item @if (@ViewBag.Title == "Property For Buy") { @Html.Raw("active"); } ">
+                                <a href="/Property?purpose=Sale" class="nav-link">BUY</a>
+                            </li>
+
+                            <li class="nav-item @if (@ViewBag.Title == "Property For Rent") { @Html.Raw("active"); } ">
+                                <a href="/Property?purpose=Rent" class="nav-link">RENT</a>
+                            </li>
+
+                            <li class="nav-item @if (@ViewBag.Title == "Add Property") { @Html.Raw("active"); } ">
+                                @Html.ActionLink("ADD PROPERTY", "AddProperty", "User", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        @if (!(ViewBag.Title == "Home"))
+        {
+            <section class="section-padding inner-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h1 class="mt-0 mb-3 text-white">@ViewBag.Title</h1>
+                            <div class="breadcrumbs">
+                                <p class="mb-0 text-white">
+                                    <a class="text-white" href="@Url.Action("Index","Home")">Home</a> / <span class="text-base">@ViewBag.Title</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+
+        <div class="w-100">
+            @RenderBody()
+        </div>
+
+        <!-- Join Team -->
+        <section id="joinTeam">
+            <h2>Join our professional team & agents<br>to start selling your house</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <a href="@Url.Action("Index", "Membership")" class="btn-base">MEMBERSHIP</a>
+            <a href="@Url.Action("Contact", "Home")" class="btn-base-outline">CONTACT US</a>
+        </section>
+        <!-- End Join Team -->
+        <!-- Footer Widgets -->
+        <section id="footer-widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 footer-column">
+                        <a href="@Url.Action("Index", "Home")" title="Logo">
+                            <img src="~/assets/img/logo.png" alt="Logo" title="Logo" class="logo" />
+                        </a>
+                        <p>Nazimabad Block # 2<br>Sindh, Karachi, Pakistan 74600</p>
+                        <p class="mb-1"><a href="tel:+923133956154">+92 313 395 6154</a></p>
+                        <p class="mb-1"><a href="mailto:support@realtorsportal.com">support@realtorsportal.com</a></p>
+                        <p class="mb-1"><a href="#">www.realtorsportal.com</a></p>
+                    </div>
+                    <div class="col-lg-2 col-md-3 footer-column">
+                        <h5>COMPANY</h5>
+                        <ul>
+                            <li><a href="@Url.Action("About", "Home")">About</a></li>
+                            <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                            <li><a href="@Url.Action("FAQs", "Home")">FAQs</a></li>
+                            <li><a href="@Url.Action("Index", "Blogs")">Blogs</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-3 footer-column">
+                        <h5>BUSINESS</h5>
+                        <ul>
+                            <li><a href="@Url.Action("Index", "Property")">Properties</a></li>
+                            <li><a href="@Url.Action("Index", "Agents")">Agents</a></li>
+                            <li><a href="@Url.Action("UserProfile", "User")">My Account</a></li>
+                            <li><a href="@Url.Action("Index", "Membership")">Membership</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 footer-column">
+                        <h5>NEWSLETTER SUBSCRIPTION</h5>
+                        <p>Subscribe to our newsletter and stay updated on the latest developments and special offers!</p>
+                        <form method="post">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Email Address.." required>
+                                <div class="input-group-append">
+                                    <button class="btn-base" type="submit">
+                                        <i class="fas fa-long-arrow-alt-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="footer-social-links mt-3">
+                            <a href="#" title="Facebook"><i class="fab fa-facebook-f mr-3"></i></a>
+                            <a href="#" title="Twitter"><i class="fab fa-twitter mr-3"></i></a>
+                            <a href="#" title="Instagram"><i class="fab fa-instagram mr-3"></i></a>
+                            <a href="#" title="Pinterest"><i class="fab fa-pinterest mr-3"></i></a>
+                            <a href="#" title="Tumblr"><i class="fab fa-tumblr mr-3"></i></a>
+                            <a href="#" title="Google Plus"><i class="fab fa-google-plus-g mr-3"></i></a>
+                            <a href="#" title="Youtube"><i class="fab fa-youtube mr-3"></i></a>
+                            <a href="#" title="Linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Footer Widgets -->
+        <!-- Footer -->
+        <footer class="footer">
+            Copyrights &copy; @DateTime.Now.Year Realtors Portal. All Rights Reserved.
+        </footer>
+        <!-- End Footer -->
+        <!-- JS FILES -->
+        <script src="~/assets/js/jquery.min.js"></script>
+        <script src="~/assets/js/bootstrap.min.js"></script>
+        <script src="~/assets/js/select2.min.js"></script>
+        <script src="~/assets/js/owl.carousel.js"></script>
+        <script src="~/assets/js/owl.autoplay.js"></script>
+        <script src="~/assets/js/youtube-video-plugin.js"></script>
+        <script src="~/assets/js/main.js"></script>
+
+    </body>
+</html>

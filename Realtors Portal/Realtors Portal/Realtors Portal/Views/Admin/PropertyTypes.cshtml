@@ -1,0 +1,60 @@
+﻿@model Realtors_Portal.Models.RP_propertyTypes
+@{
+    ViewBag.Title = "Property Types";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm("AddPropertyType", "Admin", FormMethod.Post, new { encType = "multipart/form-data" }))
+{
+    <div class="card padding-card">
+        <div class="card-body">
+            <h5 class="card-title mb-4">Add Property Type</h5>
+            <div class="form-group">
+                <label>Property Type</label>
+                @Html.TextBoxFor(m => m.pt_name, new { @class = "form-control", placeholder = "Property Type" })
+                <div class="mt-2">
+                    <button type="submit" class="btn-base">ADD PROPERTY TYPE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        ALL PROPERTY TYPES
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Property Type</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Property Type</th>
+                        <th>Options</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var pt in @ViewBag.propertyTypes)
+                    {
+                        <tr>
+                            <td>@pt.pt_id</td>
+                            <td>@pt.pt_name</td>
+                            <td>
+                                <a href="/Admin/EditPropertyType/@pt.pt_id" class="btn-sm btn-info">Edit</a>
+                                <a href="/Admin/DeletePropertyType/@pt.pt_id" class="btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
